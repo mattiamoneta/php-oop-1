@@ -35,19 +35,27 @@
                                     <tbody>
 
                                         <?php
+
+                                            $output = "";
+
                                             foreach($movies_db as $movie){
-                                                echo "<tr>
-                                                        <td>{$movie->movie_name}</td>
-                                                        <td>{$movie->movie_year}</td>
-                                                        <td>";
 
-                                                        foreach($movie->movie_genres as $genre){
-                                                            echo $genre->genre_name . ", ";
-                                                        }
+                                                $output .= "<tr>
+                                                                <td>{$movie->movie_name}</td>
+                                                                <td>{$movie->movie_year}</td>
+                                                                <td>";
+                                                
+                                                foreach($movie->movie_genres as $genre){
+                                                    $output .= $genre->genre_name . ", ";
+                                                } 
 
-                                                echo "</td>
+
+                                                $output .= "</td>
                                                         <td>{$movie->movie_director}</td>";
+                                                        
                                             }
+
+                                            echo $output;
                                         ?>
                                     </tbody>
                                 </table>

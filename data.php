@@ -33,13 +33,13 @@
      */
 
     $movies_db = [
-        new Movie("Return to Future", 1985, $returnToFuture_genres),
-        new Movie("Interstellar", 2014, $interstellar_genres),
-        new Movie("Jurassic Park", 1993, $jp_genres),
-        new Movie("Forrest Gump", 1994, $forrest_genres)
+        "Return to Future" => new Movie("Return to Future", 1985, $returnToFuture_genres),
+        "Interstellar" => new Movie("Interstellar", 2014, $interstellar_genres),
+        "Jurassic Park" => new Movie("Jurassic Park", 1993, $jp_genres),
+        "Forrest Gump" => new Movie("Forrest Gump", 1994, $forrest_genres)
     ];
 
-    $movies_db[1]->movie_director = "Christopher Nolan";
-    $movies_db[3]->movie_director = "Robert Zemeckis";
+    $movies_db["Return to Future"]->movie_director = "Christopher Nolan";
+    $movies_db["Forrest Gump"]->movie_director = "Robert Zemeckis";
 
 ?>
