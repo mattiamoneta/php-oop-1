@@ -1,25 +1,6 @@
+
 <?php
-
-    require __DIR__ . '/genres.php';
-
-    class Movie
-    {
-        public $movie_name;
-        public $movie_year;
-        public $movie_genres = [];
-        public $movie_director;
-
-        function __construct($movie_name, $movie_year, $movie_genres, $movie_director = ""){
-            $this->movie_name = $movie_name;
-            $this->movie_year = $movie_year;
-            $this->movie_director = $movie_director;
-        }
-
-        public function addDirector($director_name){
-            $this->movie_director = $director_name;
-        }
-    }
-
+    require __DIR__ . '/data.php';
 ?>
 
 <!DOCTYPE html>
@@ -28,30 +9,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
     <title>PHP OOP</title>
 </head>
-    <body>
-        <?php
+    <body data-bs-theme="dark">
+        <main>
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-10 mx-auto">
+                            <div class="card">
+                                <div class="card-body">
 
-            $returnToFuture_genres = [
-                new genre("Adventure"),
-                new genre("Comedy"),
-                new genre("SciFi")
-            ];
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Movie</th>
+                                        <th scope="col">Year</th>
+                                        <th scope="col">Genres</th>
+                                        <th scope="col">Director</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-            $interstellar_genres = [
-                new genre("SciFi"),
-                new genre("Adventure"),
-                new genre("Drama")
-            ];
+                                        <?php
+                                            foreach($movies_db as $movie){
+                                                echo "<tr>
+                                                        <td>{$movie->movie_name}</td>
+                                                        <td>{$movie->movie_year}</td>
+                                                        <td>";
 
-            $movie_returnToFuture = new Movie("Return to Future", 1985, $returnToFuture_genres);
+                                                        foreach($movie->movie_genres as $genre){
+                                                            echo $genre->genre_name . ", ";
+                                                        }
 
-            $movie_interstellar = new Movie("Interstellar", 2014, $interstellar_genres);
-            $movie_interstellar->addDirector('Christopher Nolan');
+                                                echo "</td>
+                                                        <td>{$movie->movie_director}</td>";
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
 
-            var_dump($movie_returnToFuture);
-            var_dump($movie_interstellar);
-        ?>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
