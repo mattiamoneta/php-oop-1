@@ -2,6 +2,10 @@
 
     require __DIR__ . '/Models/movie.php';
 
+    /**
+     * Generi per ogni film
+    */
+    
     $returnToFuture_genres = [
         new genre("Adventure"),
         new genre("Comedy"),
@@ -23,6 +27,10 @@
         new genre("Comedy"),
         new genre("Drama")
     ];
+
+    /**
+     * Database locale film
+     */
 
     $movies_db = [
         new Movie("Return to Future", 1985, $returnToFuture_genres),
